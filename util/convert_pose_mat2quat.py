@@ -55,6 +55,12 @@ def split_train_test(dataset_dir, splitfns_in, splitfns_out):
         split_out = splitfns_out[i]
         split_file = os.path.join(dataset_dir, split_in)
         write_file = os.path.join(dataset_dir, split_out)
+        if (not os.path.exists(split_file)):
+            print('{} does not exist'.format(split_file))
+            continue
+        if (os.path.exists(write_file)):
+            print('{} has existed'.format(write_file))
+            continue
         print('start converting', split_file)
         convert_xyzquat(dataset_dir, split_file, write_file)
         print('finish converting', write_file)
@@ -63,8 +69,8 @@ EXTENSIONS = ('.txt')
 PREFIX = ('frame')
 args = params()
 dataroot = args.dataroot
-# dataset_names = ['chess', 'fire', 'heads', 'office', 'pumpkin', 'redktichen', 'stairs']
-dataset_names = ['chess']
+dataset_names = ['chess', 'fire', 'heads', 'office', 'pumpkin', 'redkitchen', 'stairs']
+# dataset_names = ['chess']
 splitfns_in = ['TrainSplit.txt', 'TestSplit.txt']
 splitfns_out = ['dataset_train.txt', 'dataset_test.txt']
 for name in dataset_names:

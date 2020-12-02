@@ -18,6 +18,10 @@ pip install -r requirements.txt
 
 ### PoseNet train/test
 - Download a Cambridge Landscape dataset (e.g. [KingsCollege](http://mi.eng.cam.ac.uk/projects/relocalisation/#dataset)) under datasets/ folder.
+- Convert pose from rotation matrix to translation + quaternion
+```bash
+python util/convert_pose_mat2quat.py
+```
 - Compute the mean image
 ```bash
 python util/compute_image_mean.py --dataroot datasets/KingsCollege --height 256 --width 455 --save_resized_imgs

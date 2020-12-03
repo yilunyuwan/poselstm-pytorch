@@ -18,7 +18,7 @@ class BaseOptions():
         self.parser.add_argument('--lstm_hidden_size', type=int, default=256, help='hidden size of the LSTM layer in PoseLSTM')
         self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
         self.parser.add_argument('--name', type=str, default='experiment_name', help='name of the experiment. It decides where to store samples and models')
-        self.parser.add_argument('--dataset_mode', type=str, default='unaligned_posenet', help='chooses how datasets are loaded. [unaligned | aligned | single]')
+        self.parser.add_argument('--dataset_mode', type=str, default='unaligned_posenet', help='chooses how datasets are loaded. [unaligned_posenet | rgbd_posenet ]')
         self.parser.add_argument('--model', type=str, default='posenet', help='chooses which model to use. [posenet | poselstm]')
         self.parser.add_argument('--nThreads', default=8, type=int, help='# threads for loading data')
         self.parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')

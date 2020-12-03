@@ -7,6 +7,9 @@ def CreateDataset(opt):
     if opt.dataset_mode == 'unaligned_posenet':
         from data.unaligned_posenet_dataset import UnalignedPoseNetDataset
         dataset = UnalignedPoseNetDataset()
+    elif opt.dataset_mode == 'rgbd_posenet' :
+        from data.rgbd_posenet_dataset import RGBDPoseNetDataset
+        dataset = RGBDPoseNetDataset()
     else:
         raise ValueError("Dataset [%s] not recognized." % opt.dataset_mode)
 

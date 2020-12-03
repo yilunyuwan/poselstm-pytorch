@@ -44,7 +44,7 @@ def get_transform(opt):
 
 def get_posenet_transform(opt, mean_image):
     transform_list = []
-    transform_list.append(transforms.Resize(opt.loadSize, Image.BICUBIC))
+    # transform_list.append(transforms.Resize(opt.loadSize, Image.BICUBIC))
     transform_list.append(transforms.Lambda(
         lambda img: __subtract_mean(img, mean_image)))
     transform_list.append(transforms.Lambda(
@@ -82,3 +82,4 @@ def __crop_image(img, size, isTrain):
 
 def __to_tensor(img):
     return torch.from_numpy(img.transpose((2, 0, 1)))
+    

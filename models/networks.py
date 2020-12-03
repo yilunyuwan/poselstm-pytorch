@@ -30,7 +30,11 @@ def weight_init_googlenet(key, module, weights=None):
     else:
         # print(key, weights[(key+"_1").encode()].shape, module.bias.size())
         module.bias.data[...] = torch.from_numpy(weights[(key+"_1").encode()])
-        module.weight.data[...] = torch.from_numpy(weights[(key+"_0").encode()])
+        if (module.weight.data.shape == weights[(key+"_0").encode()].shape):
+            module.weight.data[...] = torch.from_numpy(weights[(key+"_0").encode()])
+        else: # only for RGBD posenet network conv1/7x7_s2_0 from [64, 3, 7, 7] to [64, 4, 7, 7]
+            print(key, weights[(key+"_0").encode()].shape, module.weight.size())
+            module.weight.data[:, :3, :, :] = torch.from_numpy(weights[(key+"_0").encode()])[...]
     return module
 
 def get_scheduler(optimizer, opt):
